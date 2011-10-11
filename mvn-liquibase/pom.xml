@@ -17,13 +17,13 @@
 
     <dependencies>
   
-        <!-- hsqldb -->
+        <!-- mysql -->
         <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>2.2.4</version>
-        </dependency>
-  
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.18</version>
+        </dependency>                    
+
         <!-- testing -->
         <dependency>
             <groupId>junit</groupId>
@@ -43,10 +43,11 @@
                 <configuration>
                     <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
                     <changeLogFile>src/main/database/changelog/db.changelog-master.xml</changeLogFile>
-                    <driver>org.hsqldb.jdbc.JDBCDriver</driver>
-                    <url>jdbc:hsqldb:file:target/db/test.db</url>
-                    <username>SA</username>
-                    <password></password>
+                    <driver>com.mysql.jdbc.Driver</driver>
+                    <url>jdbc:mysql://localhost:3306/mvnLiquibase</url>
+                    <username>mvnLiquibase</username>
+                    <password>1234</password>
+                    <verbose>true</verbose>
                 </configuration>
                 <executions>
                     <execution>
@@ -54,6 +55,37 @@
                         <goals>
                             <goal>update</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- dbunit -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>dbunit-maven-plugin</artifactId>
+                <version>1.0-beta-3</version>        
+                <configuration>
+                    <driver>com.mysql.jdbc.Driver</driver>
+                    <url>jdbc:mysql://localhost:3306/mvnLiquibase</url>
+                    <username>mvnLiquibase</username>
+                    <password>1234</password>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.18</version>
+                    </dependency>                    
+                </dependencies>
+                <executions>
+                    <execution>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>operation</goal>
+                        </goals>
+                        <configuration>
+                            <type>CLEAN_INSERT</type>
+                            <src>src/test/database/data/dataset_base.xml</src>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
