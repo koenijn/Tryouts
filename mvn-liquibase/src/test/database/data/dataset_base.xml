@@ -1,11 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
-  <table name="persons">
-    <column>prs_id</column>
-    <column>name</column>
-    <row>
-      <value>1</value>
-      <value>Hans Kazan</value>
-    </row>
-  </table>
+    <persons prs_id="1" name="Hans" />
+    <persons prs_id="2" name="Peter" />
+    <persons prs_id="3" name="Marijn" />
 </dataset>
