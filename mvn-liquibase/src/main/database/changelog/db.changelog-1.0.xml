@@ -14,6 +14,9 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <modifySql dbms="mysql">
+            <append value=" engine innodb"/>
+        </modifySql>
     </changeSet>
     <changeSet id="2" author="mboomen">
         <tagDatabase tag="1.0.0"/>

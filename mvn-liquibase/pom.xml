@@ -156,7 +156,7 @@
                             <goal>operation</goal>
                         </goals>
                         <configuration>
-                            <type>CLEAN_INSERT</type>
+                            <type>REFRESH</type>
                             <format>flat</format>
                             <src>src/test/database/data/dataset_base.xml</src>
                         </configuration>
