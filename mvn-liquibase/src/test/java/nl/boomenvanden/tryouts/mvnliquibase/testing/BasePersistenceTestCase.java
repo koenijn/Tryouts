@@ -66,15 +66,15 @@ public abstract class BasePersistenceTestCase extends TestCase {
         return conn;
     }
     
-    public void loadDataSet(IDatabaseConnection connection, DatabaseOperation operation, IDataSet dataSet) throws Exception {
-        operation.execute(connection, dataSet);
-    }
+//    public void loadDataSet(IDatabaseConnection connection, DatabaseOperation operation, IDataSet dataSet) throws Exception {
+//        operation.execute(connection, dataSet);
+//    }
     
     public void loadDataSet(DatabaseOperation operation, IDataSet dataSet) throws Exception {
         IDatabaseConnection connection = getDatabaseConnection();
         
         try {
-            loadDataSet(connection, operation, dataSet);
+            operation.execute(connection, dataSet);
         }
         finally {
             connection.close();
