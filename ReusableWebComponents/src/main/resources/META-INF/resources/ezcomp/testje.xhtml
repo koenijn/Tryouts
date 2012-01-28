@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite">
+
+    <!--
+    used articles:
+    http://blogs.oracle.com/enterprisetechtips/entry/true_abstraction_composite_ui_components
+    http://blogs.oracle.com/enterprisetechtips/entry/true_abstraction_composite_ui_components1
+    -->
+    
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="yourName" default="World" />
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <p>Hallo #{cc.attrs.yourName}</p>
+    </cc:implementation>
+</html>

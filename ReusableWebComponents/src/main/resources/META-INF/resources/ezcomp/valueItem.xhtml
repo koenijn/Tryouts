@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <!--
+    used articles:
+    http://blogs.oracle.com/enterprisetechtips/entry/true_abstraction_composite_ui_components
+    http://blogs.oracle.com/enterprisetechtips/entry/true_abstraction_composite_ui_components1
+    
+    http://www.ibm.com/developerworks/java/library/j-jsf2fu0111/index.html?ca=drs-
+    -->
+    
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="yourName" default="World" />
+        <cc:editableValueHolder name="yourName" targets="inputstuff" />
+        <cc:actionSource name="btnSubmit" targets="btnSubmit" />
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:inputText id="inputstuff" value="#{cc.attrs.yourName}" />
+        <h:commandButton id="btnSubmit" value="submit" >
+            <f:ajax render="inputstuff" execute="inputstuff" onevent="ajaxExecuting" />
+        </h:commandButton>
+    </cc:implementation>
+</html>
