@@ -10,9 +10,14 @@
     </h:head>
     <h:body>
         <h:form>
+            <h:messages />
             <ez:testje />
             <ez:testje yourName="Mark" />
             <ez:valueItem id="ttt" yourName="#{compositeComponentsBean.yourName}" />
+            <p>
+                <ez:inputPopup value="#{compositeComponentsBean.yourName}" 
+                               actionListener="#{compositeComponentsBean.popupAction}" />
+            </p>
         </h:form>
     </h:body>
 </html>
