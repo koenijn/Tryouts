@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ez:template xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ez="http://vandenboomen.nl/tryouts/reusablewebcomponents/ui/components"
+      title="Just testing the ajax possibilities">
+    <h:form id="theForm">
+        <h:messages id="msgs"/>
+        <h4>InputText</h4>
+        <h:inputText id="myValueField" value="#{ajaxBean.value}" required="true">
+            <f:ajax event="keyup" execute="@this" render="theShowingOutput msgs" />
+        </h:inputText>
+        <br/>
+        <h:outputText id="theShowingOutput" value="#{ajaxBean.value}" />
+        
+        <hr/>
+
+        <h4>SelectOneMenu</h4>
+        <h:selectOneMenu id="mySelectField" value="#{ajaxBean.selectedValue}" required="true">
+            <f:ajax event="change" execute="@this" render="theShowingOutput2 msgs" />
+            <f:selectItems value="#{ajaxBean.items}" var="item"
+                           itemLabel="#{item}" itemValue="#{item}" noSelectionValue="-"/>
+        </h:selectOneMenu>
+        <br/>
+        <h:outputText id="theShowingOutput2" value="#{ajaxBean.selectedValue}" />
+
+        
+    </h:form>
+</ez:template>
+
