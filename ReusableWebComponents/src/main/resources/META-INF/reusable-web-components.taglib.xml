@@ -1,6 +1,17 @@
+
 <facelet-taglib version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd">
-  <namespace>http://vandenboomen.nl/tryouts/reusablewebcomponents/ui/components</namespace>
-  <composite-library-name>ezcomp</composite-library-name>
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd">
+    <namespace>http://vandenboomen.nl/tryouts/reusablewebcomponents/ui/components</namespace>
+    <composite-library-name>ezcomp</composite-library-name>
+  
+    <tag>
+        <tag-name>template</tag-name>
+        <source>resources/templates/template.xhtml</source>
+        <attribute>
+            <name>title</name>
+            <required>true</required>
+            <description>The title of the page</description>
+        </attribute>
+    </tag>
 </facelet-taglib>
