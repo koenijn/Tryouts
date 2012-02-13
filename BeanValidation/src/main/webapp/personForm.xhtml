@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="personForm">
+            <h:messages />
+            
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Firstname" for="firstname"/>
+                <h:inputText id="firstname" value="#{personFormBean.newPerson.firstName}"/>
+                
+                <h:outputLabel value="Middle name" for="middleName"/>
+                <h:inputText id="middleName" value="#{personFormBean.newPerson.middleName}"/>
+
+                <h:outputLabel value="Lastname" for="lastname"/>
+                <h:inputText id="lastname" value="#{personFormBean.newPerson.lastName}"/>
+
+                <h:outputLabel value="Email" for="emailAddress"/>
+                <h:inputText id="emailAddress" value="#{personFormBean.newPerson.emailAddress}"/>
+
+                <h:outputLabel value="Street" for="street"/>
+                <h:inputText id="street" value="#{personFormBean.newPerson.street}"/>
+
+                <h:outputLabel value="House number" for="houseNumber"/>
+                <h:inputText id="houseNumber" value="#{personFormBean.newPerson.houseNumber}"/>
+
+                <h:outputLabel value="Postal code" for="postalCode"/>
+                <h:inputText id="postalCode" value="#{personFormBean.newPerson.postalCode}"/>
+
+                <h:outputLabel value="City" for="city"/>
+                <h:inputText id="city" value="#{personFormBean.newPerson.city}"/>
+
+                <h:outputLabel value="Birthday" for="birthday"/>
+                <h:inputText id="birthday" value="#{personFormBean.newPerson.birthday}"/>
+
+                <h:outputLabel value="Gender" for="gender"/>
+                <h:selectOneRadio id="gender" value="#{personFormBean.newPerson.gender}">
+                    <f:selectItem itemLabel="Male" itemValue="MALE" />
+                    <f:selectItem itemLabel="Female" itemValue="FEMALE" />
+                </h:selectOneRadio>
+
+                <h:outputLabel value="No. of children" for="numberOfChildren"/>
+                <h:inputText id="numberOfChildren" value="#{personFormBean.newPerson.numberOfChildren}"/>
+
+                <h:outputLabel value="Accepted the terms" for="acceptedTerms"/>
+                <h:selectBooleanCheckbox id="acceptedTerms" value="#{personFormBean.newPerson.acceptedTerms}"/>
+
+            </h:panelGrid>
+            <h:commandButton action="#{personFormBean.save()}" value="Save person">
+<!--                <f:ajax event="click" execute="@form" render="personForm"/>-->
+            </h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+
