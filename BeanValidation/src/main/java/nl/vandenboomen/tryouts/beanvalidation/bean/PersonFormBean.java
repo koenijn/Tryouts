@@ -4,13 +4,17 @@
  */
 package nl.vandenboomen.tryouts.beanvalidation.bean;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.validation.ConstraintViolation;
 import nl.vandenboomen.tryouts.beanvalidation.ejb.PersonEjb;
+import nl.vandenboomen.tryouts.beanvalidation.exception.ValidationException;
 import nl.vandenboomen.tryouts.beanvalidation.model.Person;
 
 /**
@@ -46,7 +50,25 @@ public class PersonFormBean {
     
     public void saveNoUiToEjb() {
         Person thePerson = new Person();
-        
-        personEjb.savePerson(thePerson); // the validation should go of
+        try {
+            personEjb.savePerson(thePerson); // the validation should go of
+        } catch (ValidationException ex) {
+            FacesContext fctx = FacesContext.getCurrentInstance();
+            for (ConstraintViolation violation : ex.getValidationErrors()) {
+                fctx.addMessage(null, new FacesMessage("EJB", violation.getMessage()));
+            }
+        }
+    }
+
+    public void saveNoUiNullToEjb() {
+        Person thePerson = null;
+        try {
+            personEjb.saveNullPerson(thePerson); // the validation should go of
+        } catch (ValidationException ex) {
+            FacesContext fctx = FacesContext.getCurrentInstance();
+            for (ConstraintViolation violation : ex.getValidationErrors()) {
+                fctx.addMessage(null, new FacesMessage("EJB", violation.getMessage()));
+            }
+        }
     }
 }

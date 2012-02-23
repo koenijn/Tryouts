@@ -9,11 +9,11 @@
     </h:head>
     <h:body>
         <h:form id="personEjbForm">
-            <h:messages />
+            <h:messages showDetail="true" />
             
-            <h:commandButton action="#{personFormBean.saveNoUiToEjb()}" value="Save person with EJB">
-<!--                <f:ajax event="click" execute="@form" render="personForm"/>-->
-            </h:commandButton>
+            <h:commandButton action="#{personFormBean.saveNoUiToEjb()}" value="Save person with EJB"/> (programmatic validation)
+            <br/>
+            <h:commandButton action="#{personFormBean.saveNoUiNullToEjb()}" value="Save null person with EJB"/>
         </h:form>
     </h:body>
 </html>
