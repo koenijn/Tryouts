@@ -9,7 +9,7 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:form>
+        <h:form id="myForm">
             <h:messages />
             <ez:testje />
             <ez:testje yourName="Mark" />
@@ -18,6 +18,9 @@
                 <ez:inputPopup value="#{compositeComponentsBean.yourName}" 
                                actionListener="#{compositeComponentsBean.popupAction}" />
             </p>
+            
+            <h1>Fill programmatic:</h1>
+            <h:panelGroup id="programmaticContainer"/>
         </h:form>
     </h:body>
 </html>
