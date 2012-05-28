@@ -21,7 +21,9 @@ import nl.vandenboomen.tryouts.jmstestproject.ejb.TheGlobalBufferBean;
         @ActivationConfigProperty(propertyName = "acknowledgeMode",
                                   propertyValue = "Auto-acknowledge"),
         @ActivationConfigProperty(propertyName = "destinationType",
-                                  propertyValue = "javax.jms.Queue")
+                                  propertyValue = "javax.jms.Queue"),
+        @ActivationConfigProperty(propertyName = "messageSelector",
+                                  propertyValue = "ACTION='proc1'")
     })
 public class MyQueueProcessor1 implements MessageListener {
 

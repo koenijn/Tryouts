@@ -26,35 +26,38 @@ public class JmsMyQueueSenderBean {
     @Resource(mappedName = "jms/MyQueueFactory")
     private ConnectionFactory myQueueFactory;
 
+    private boolean blaa = false;
+    
     @Schedule(hour="*", minute = "*", second = "*/10")
     public void myTimer() throws JMSException {
-        
-        sendToMyQueue("Triggered by the timer");
-        
+        blaa = !blaa;
+        String action = blaa ? "proc1" : "proc2";
+        sendToMyQueue("Triggered by the timer", action);
     }
     
     
-    public void sendToMyQueue(String message) throws JMSException {
+    public void sendToMyQueue(String message, String action) throws JMSException {
         
-        sendJMSMessageToMyQueue("Message send by " + JmsMyQueueSenderBean.class.getSimpleName() + " on " + new Date() + ": " + message);
+        sendJMSMessageToMyQueue("Message send by " + JmsMyQueueSenderBean.class.getSimpleName() + " on " + new Date() + ": " + message, action);
         
     }
 
-    private Message createJMSMessageForjmsMyQueue(Session session, Object messageData) throws JMSException {
+    private Message createJMSMessageForjmsMyQueue(Session session, Object messageData, String action) throws JMSException {
         // TODO create and populate message to send
         TextMessage tm = session.createTextMessage();
+        tm.setStringProperty("ACTION", action);
         tm.setText(messageData.toString());
         return tm;
     }
 
-    private void sendJMSMessageToMyQueue(Object messageData) throws JMSException {
+    private void sendJMSMessageToMyQueue(Object messageData, String action) throws JMSException {
         Connection connection = null;
         Session session = null;
         try {
             connection = myQueueFactory.createConnection();
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             MessageProducer messageProducer = session.createProducer(myQueue);
-            messageProducer.send(createJMSMessageForjmsMyQueue(session, messageData));
+            messageProducer.send(createJMSMessageForjmsMyQueue(session, messageData, action));
         } finally {
             if (session != null) {
                 try {

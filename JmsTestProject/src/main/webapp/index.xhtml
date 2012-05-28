@@ -14,6 +14,10 @@
             <h1>JMS Test Project</h1>
             
             <h:inputText value="#{loggedMessagesBean.message}" /><br/>
+            <h:selectOneRadio value="#{loggedMessagesBean.action}">
+                <f:selectItem itemLabel="Processor 1" itemValue="proc1" />
+                <f:selectItem itemLabel="Processor 2" itemValue="proc2" />
+            </h:selectOneRadio>
             <h:commandButton value="Send to topic" action="#{loggedMessagesBean.sendMessageTopic}"/>
             <h:commandButton value="Send to queue" action="#{loggedMessagesBean.sendMessageQueue}"/>
             

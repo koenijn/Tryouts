@@ -34,6 +34,7 @@ public class LoggedMessagesBean {
     private Stack<String> messages;
     
     private String message;
+    private String action;
 
     @PostConstruct
     private void init() {
@@ -49,7 +50,7 @@ public class LoggedMessagesBean {
     }
     
     public void sendMessageQueue() throws JMSException {
-        queueSender.sendToMyQueue(message);
+        queueSender.sendToMyQueue(message, action);
     }
     
     public void sendMessageTopic() throws JMSException {
@@ -62,6 +63,14 @@ public class LoggedMessagesBean {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
     }
     
     
