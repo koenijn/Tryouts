@@ -62,6 +62,10 @@ public class Order {
         
         this.orderLines.add(orderLine);
     }
+    
+    public void deleteOrderLine(OrderLine orderLine) {
+        this.orderLines.remove(orderLine);
+    }
 
     @Override
     public boolean equals(Object obj) {

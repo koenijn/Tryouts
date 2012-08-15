@@ -73,4 +73,29 @@ public class JpaOrderRepositoryTest extends BaseJpaTestCase {
         }
         
     }
+
+    @Test
+    public void testRemoveOrderLine_existingOrderWithTwoOrderLines_orderWithOneOrderLine() throws Exception {
+        Order order = new Order();
+        order.setReference("MyReference");
+        order.addOrderLine("Hagelslag", 3L);
+        order.addOrderLine("Aardbeienjam", 5L);
+        
+        em.getTransaction().begin();
+        orderRepository.save(order);
+        em.getTransaction().commit();
+        
+        
+        em.getTransaction().begin();
+        order = orderRepository.findByPk(order.getId());
+        order.deleteOrderLine(order.getOrderLines().get(0));
+        em.getTransaction().commit();
+        
+        Long orderId = order.getId();
+        order = null;
+        
+        Order savedOrder = orderRepository.findByPk(orderId);
+        assertEquals(1, savedOrder.getOrderLines().size());
+    }
+
 }
