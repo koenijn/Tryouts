@@ -32,6 +32,7 @@ public class Order {
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true)
     @JoinColumn(name="order_id")
+    //@JoinColumn(name="order_id", nullable=false) // <== this doesn't work somehow
     private List<OrderLine> orderLines;
     
     public Order() {
