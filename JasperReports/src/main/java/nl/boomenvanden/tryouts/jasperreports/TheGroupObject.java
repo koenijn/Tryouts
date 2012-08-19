@@ -10,6 +10,7 @@ package nl.boomenvanden.tryouts.jasperreports;
  */
 public class TheGroupObject {
     private String groupText;
+    private Long groupNumber;
 
     public String getGroupText() {
         return groupText;
@@ -19,6 +20,14 @@ public class TheGroupObject {
         this.groupText = groupText;
     }
 
+    public Long getGroupNumber() {
+        return groupNumber;
+    }
+
+    public void setGroupNumber(Long groupNumber) {
+        this.groupNumber = groupNumber;
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

@@ -7,6 +7,7 @@ package nl.boomenvanden.tryouts.jasperreports;
 public class TheRowObject {
     private TheGroupObject parent;
     private String myText;
+    private Long rowNumber;
 
     public String getMyText() {
         return myText;
@@ -16,6 +17,14 @@ public class TheRowObject {
         this.myText = myText;
     }
 
+    public Long getRowNumber() {
+        return rowNumber;
+    }
+
+    public void setRowNumber(Long rowNumber) {
+        this.rowNumber = rowNumber;
+    }
+    
     public TheGroupObject getParent() {
         return parent;
     }

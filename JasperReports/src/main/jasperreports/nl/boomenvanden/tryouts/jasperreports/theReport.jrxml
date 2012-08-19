@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="theReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f7fd265a-7d0d-48d0-86cf-6e3bf46a1e64">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<import value="nl.boomenvanden.tryouts.jasperreports.TheRowObject"/>
@@ -13,14 +13,24 @@
 	<field name="parent" class="nl.boomenvanden.tryouts.jasperreports.TheGroupObject">
 		<fieldDescription><![CDATA[parent]]></fieldDescription>
 	</field>
+	<field name="rowNumber" class="java.lang.Long">
+		<fieldDescription><![CDATA[rowNumber]]></fieldDescription>
+	</field>
+	<variable name="variable1" class="java.lang.Long" resetType="Group" resetGroup="GroupByParent" calculation="Count"/>
 	<group name="GroupByParent">
 		<groupExpression><![CDATA[$F{parent}]]></groupExpression>
 		<groupHeader>
 			<band height="20">
-				<textField>
-					<reportElement uuid="77094e14-41ca-4012-9ecf-fa1fd8089f54" x="347" y="0" width="208" height="20"/>
-					<textElement textAlignment="Right"/>
+				<printWhenExpression><![CDATA[$F{parent}.getGroupText() != null]]></printWhenExpression>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="77094e14-41ca-4012-9ecf-fa1fd8089f54" x="59" y="0" width="151" height="20" isRemoveLineWhenBlank="true"/>
+					<textElement textAlignment="Left"/>
 					<textFieldExpression><![CDATA[$F{parent}.getGroupText()]]></textFieldExpression>
+				</textField>
+				<textField pattern="">
+					<reportElement uuid="a7bf5752-9044-4b81-9ad4-0182a7e7dcea" x="0" y="0" width="59" height="20"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{parent}.getGroupNumber()]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -51,9 +61,16 @@
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement uuid="9ee7e6b8-c0dc-4e63-835a-7778366cbf2f" x="0" y="0" width="100" height="20"/>
+				<reportElement uuid="9ee7e6b8-c0dc-4e63-835a-7778366cbf2f" x="59" y="0" width="151" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{myText}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement uuid="a7bf5752-9044-4b81-9ad4-0182a7e7dcea" isPrintRepeatedValues="false" x="0" y="0" width="59" height="20">
+					<printWhenExpression><![CDATA[1L.equals($F{rowNumber}) && $F{parent}.getGroupText() == null]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{parent}.getGroupNumber()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
