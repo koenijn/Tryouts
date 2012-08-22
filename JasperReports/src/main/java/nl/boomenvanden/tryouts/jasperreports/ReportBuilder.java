@@ -13,6 +13,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.JRPdfExporterParameter;
 
 /**
  *
@@ -23,12 +25,18 @@ public class ReportBuilder {
         InputStream report = this.getClass().getResourceAsStream("theReport.jasper");
         
         Map parameters = new HashMap();
+        parameters.put(JRPdfExporterParameter.PROPERTY_PDF_VERSION, JRPdfExporterParameter.PDF_VERSION_1_7);
         
         JRDataSource dataSource = createDataSource(rows);
         try {
             JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
             
-            JasperExportManager.exportReportToPdfStream(print, output);
+            JRPdfExporter exporter = new JRPdfExporter();
+            exporter.setParameter(JRPdfExporterParameter.PDF_VERSION, JRPdfExporterParameter.PDF_VERSION_1_7);
+            exporter.setParameter(JRExporterParameter.JASPER_PRINT, print);
+            exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, output);
+            exporter.exportReport();
+//            JasperExportManager.exportReportToPdfStream(print, output);
             
         } catch (JRException ex) {
             throw new ReportException("Exception while generating report", ex);
