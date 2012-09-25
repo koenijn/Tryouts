@@ -21,7 +21,12 @@
     </properties>
 
     <dependencies>
-        
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils-core</artifactId>
+            <version>1.8.3</version>
+        </dependency>
+
         <dependency>
             <!-- Note: dependency must be declared before the javaee-api -->
             <groupId>org.glassfish.extras</groupId>

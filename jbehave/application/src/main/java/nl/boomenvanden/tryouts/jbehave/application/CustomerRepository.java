@@ -14,4 +14,5 @@ import nl.boomenvanden.tryouts.jbehave.application.domain.Customer;
 @Local
 public interface CustomerRepository {
     void createCustomer(Customer customer);
+    Customer findByCustomerNumber(Long customerNumber);
 }

@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import nl.boomenvanden.tryouts.jbehave.application.CustomerRepository;
 import nl.boomenvanden.tryouts.jbehave.application.domain.Customer;
+import org.apache.commons.lang3.Validate;
 
 /**
  *
@@ -25,7 +26,7 @@ public class JpaCustomerRepository implements CustomerRepository {
     }
 
     public JpaCustomerRepository(EntityManager em) {
-        this.em = em;
+        this.em = Validate.notNull(em);
     }
     
     public void createCustomer(Customer customer) {
@@ -36,6 +37,11 @@ public class JpaCustomerRepository implements CustomerRepository {
         String query = "select c from Customer c order by c.companyName";
         List<Customer> result = em.createQuery(query).getResultList();
         return result;
+    }
+
+    public Customer findByCustomerNumber(Long customerNumber) {
+        Customer customer = em.find(Customer.class, Validate.notNull(customerNumber));
+        return customer;
     }
     
 }

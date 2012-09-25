@@ -29,4 +29,9 @@ public class CustomerService {
         
     }
     
+    public Customer getCustomerByCustomerNumber(Long customerNumber) {
+        Customer customer = customerRepository.findByCustomerNumber(customerNumber);
+        return customer;
+    }
+    
 }

@@ -7,6 +7,7 @@ import nl.boomenvanden.tryouts.jbehave.application.CustomerService;
 import nl.boomenvanden.tryouts.jbehave.application.domain.Address;
 import nl.boomenvanden.tryouts.jbehave.application.domain.Customer;
 import nl.boomenvanden.tryouts.jbehave.application.infrastructure.JpaCustomerRepository;
+import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.jbehave.core.annotations.*;
@@ -43,14 +44,14 @@ public class AddCustomerSteps extends BaseJpaTestCase {
         unsavedCustomer = new Customer();
     }
 
-    @Given("the customer's companyName is empty")
-    public void givenTheCustomersCompanyNameIsEmpty() {
-        unsavedCustomer.setCompanyName(null);
+    @Given("the customer's $propertyName is empty")
+    public void givenTheCustomersCompanyNameIsEmpty(String propertyName) throws Exception {
+        PropertyUtils.setProperty(unsavedCustomer, propertyName, null);
     }
 
-    @Given("the customer's companyName is $companyName")
-    public void givenTheCustomersCompanyNameIs(String companyName) {
-        unsavedCustomer.setCompanyName(companyName);
+    @Given("the customer's $propertyName is $value")
+    public void givenTheCustomersCompanyNameIs(String propertyName, String value) throws Exception {
+        PropertyUtils.setProperty(unsavedCustomer, propertyName, value);
     }
 
     @Given("the customer has no contactAddress")
@@ -92,9 +93,13 @@ public class AddCustomerSteps extends BaseJpaTestCase {
         }
     }
     
-    @Then("the saved customer's companyName is $companyName")
-    public void thenTheCustomersCompanyNameIs(String companyName) {
-        assertEquals(companyName, savedCustomer.getCompanyName());
+    @Then("the saved customer's $propertyName is $expected")
+    public void thenTheCustomersPropertyIsValue(String propertyName, String expected) throws Exception {
+        assertEquals(expected, PropertyUtils.getProperty(savedCustomer, propertyName));
+    }
+    
+    private void assertPropertyEquals(Object bean, String propertyName, Object expected) throws Exception {
+        
     }
     
     @Then("the saved customer has a contactAddress with values\ncountry: $country\npostalCode: $postalCode\ncity: $city\nstreet: $street\nhouseNumber: $houseNumber")
@@ -103,8 +108,10 @@ public class AddCustomerSteps extends BaseJpaTestCase {
             String postalCode,
             String city,
             String street,
-            String houseNumber) {
+            String houseNumber) throws Exception {
         contactAddress = savedCustomer.getContactAddress();
+        
+        assertPropertyEquals(savedCustomer, "contactAddress.country", country);
         
         assertEquals(country, contactAddress.getCountry());
         assertEquals(postalCode, contactAddress.getPostalCode());
@@ -143,11 +150,11 @@ public class AddCustomerSteps extends BaseJpaTestCase {
     public void thenTheCustomerIsSaved() {
         printException();
         assertNull(exceptionThrown);
-
+        
         Long customerNumber = unsavedCustomer.getCustomerNumber();
         assertNotNull(unsavedCustomer.getCustomerNumber());
 
-        this.savedCustomer = em.find(Customer.class, customerNumber);
+        this.savedCustomer = customerService.getCustomerByCustomerNumber(customerNumber);
         assertNotNull(savedCustomer);
     }
 
