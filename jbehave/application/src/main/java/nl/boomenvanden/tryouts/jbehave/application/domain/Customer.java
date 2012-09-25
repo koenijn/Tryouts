@@ -8,7 +8,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import org.apache.commons.lang3.Validate;
+import nl.boomenvanden.tryouts.jbehave.validation.Required;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -23,7 +23,7 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="CMR_SEQ")
     @SequenceGenerator(name="CMR_SEQ", sequenceName="CMR_SEQ")
     private Long customerNumber;
-    @NotNull
+    @Required
     private String companyName;
     @NotNull
     @Valid

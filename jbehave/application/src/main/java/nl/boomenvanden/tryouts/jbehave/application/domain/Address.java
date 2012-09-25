@@ -6,7 +6,7 @@ package nl.boomenvanden.tryouts.jbehave.application.domain;
 
 import java.io.Serializable;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
+import nl.boomenvanden.tryouts.jbehave.validation.Required;
 
 /**
  *
@@ -15,15 +15,15 @@ import javax.validation.constraints.NotNull;
 @Embeddable
 public class Address implements Serializable {
     
-    @NotNull
+    @Required
     private String country;
-    @NotNull
+    @Required
     private String postalCode;
-    @NotNull
+    @Required
     private String city;
-    @NotNull
+    @Required
     private String street;
-    @NotNull
+    @Required
     private String houseNumber;
 
     public Address makeCopy(){
