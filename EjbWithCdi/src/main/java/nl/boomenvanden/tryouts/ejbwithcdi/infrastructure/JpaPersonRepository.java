@@ -4,6 +4,7 @@
  */
 package nl.boomenvanden.tryouts.ejbwithcdi.infrastructure;
 
+import nl.boomenvanden.tryouts.ejbwithcdi.application.domain.PersonRepository;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -13,9 +14,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import nl.boomenvanden.tryouts.ejbwithcdi.annotation.DefaultDatabase;
-import nl.boomenvanden.tryouts.ejbwithcdi.application.PersonRepository;
-import nl.boomenvanden.tryouts.ejbwithcdi.application.domain.Person;
+import nl.boomenvanden.tryouts.ejbwithcdi.application.domain.model.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

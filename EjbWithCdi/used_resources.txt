@@ -1,6 +1,24 @@
+# Architecture
+http://dddsample.sourceforge.net
+
+http://jeffreypalermo.com/blog/the-onion-architecture-part-1/
+http://jeffreypalermo.com/blog/the-onion-architecture-part-2/
+http://jeffreypalermo.com/blog/the-onion-architecture-part-3/
+http://www.headspring.com/jeffrey/onion-architecture-part-4-after-four-years/
+
+http://www.artima.com/objectsandjava/webuscript/PackagesAccess1.html
+
+
+
+# CDI
+
 http://www.oracle.com/technetwork/articles/java/ejb-3-1-175064.html
 http://www.oracle.com/technetwork/articles/java/cdi-javaee-bien-225152.html
 
 http://antoniogoncalves.org/2011/04/07/injection-with-cdi-part-i/
 http://antoniogoncalves.org/2011/05/03/injection-with-cdi-part-ii/
 http://antoniogoncalves.org/2011/09/25/injection-with-cdi-part-iii/
+
+
+# Maybe @ViewScoped is possible:
+http://docs.jboss.org/seam/3/faces/reference/snapshot/en-US/html_single/#viewscoped

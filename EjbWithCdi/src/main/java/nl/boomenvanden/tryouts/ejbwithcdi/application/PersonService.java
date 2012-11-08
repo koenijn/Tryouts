@@ -4,13 +4,14 @@
  */
 package nl.boomenvanden.tryouts.ejbwithcdi.application;
 
+import nl.boomenvanden.tryouts.ejbwithcdi.application.domain.PersonRepository;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
-import nl.boomenvanden.tryouts.ejbwithcdi.application.domain.Person;
+import nl.boomenvanden.tryouts.ejbwithcdi.application.domain.model.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

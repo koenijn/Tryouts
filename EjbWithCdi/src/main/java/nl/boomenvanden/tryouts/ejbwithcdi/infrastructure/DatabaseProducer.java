@@ -7,13 +7,12 @@ package nl.boomenvanden.tryouts.ejbwithcdi.infrastructure;
 import java.io.Serializable;
 import javax.enterprise.inject.Produces;
 import javax.persistence.*;
-import nl.boomenvanden.tryouts.ejbwithcdi.annotation.DefaultDatabase;
 
 /**
  *
  * @author mark
  */
-public class DatabaseProducer implements Serializable {
+class DatabaseProducer implements Serializable {
     
     @Produces
     @PersistenceContext(unitName="thePU")

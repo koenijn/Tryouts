@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package nl.boomenvanden.tryouts.ejbwithcdi.annotation;
+package nl.boomenvanden.tryouts.ejbwithcdi.application.domain;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
