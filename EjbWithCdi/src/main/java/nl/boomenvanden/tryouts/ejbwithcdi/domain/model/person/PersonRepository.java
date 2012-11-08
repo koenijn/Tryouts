@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package nl.boomenvanden.tryouts.ejbwithcdi.application.domain;
+package nl.boomenvanden.tryouts.ejbwithcdi.domain.model.person;
 
 import java.util.List;
-import nl.boomenvanden.tryouts.ejbwithcdi.application.domain.model.Person;
+import nl.boomenvanden.tryouts.ejbwithcdi.domain.model.person.Person;
 
 /**
  *

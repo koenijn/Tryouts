@@ -10,8 +10,8 @@ import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import nl.boomenvanden.tryouts.ejbwithcdi.application.PersonService;
-import nl.boomenvanden.tryouts.ejbwithcdi.application.domain.model.Person;
+import nl.boomenvanden.tryouts.ejbwithcdi.application.PersonMaintenanceService;
+import nl.boomenvanden.tryouts.ejbwithcdi.domain.model.person.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +25,7 @@ public class PersonsBean {
     private static final Logger LOG = LoggerFactory.getLogger(PersonsBean.class);
     
     @Inject
-    private PersonService personService;
+    private PersonMaintenanceService personService;
     
     private List<Person> persons;
     

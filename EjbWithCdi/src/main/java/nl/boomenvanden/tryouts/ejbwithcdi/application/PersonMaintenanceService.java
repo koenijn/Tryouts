@@ -4,14 +4,14 @@
  */
 package nl.boomenvanden.tryouts.ejbwithcdi.application;
 
-import nl.boomenvanden.tryouts.ejbwithcdi.application.domain.PersonRepository;
+import nl.boomenvanden.tryouts.ejbwithcdi.domain.model.person.PersonRepository;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
-import nl.boomenvanden.tryouts.ejbwithcdi.application.domain.model.Person;
+import nl.boomenvanden.tryouts.ejbwithcdi.domain.model.person.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,8 +21,8 @@ import org.slf4j.LoggerFactory;
  */
 @Named
 @Stateless
-public class PersonService {
-    private static final Logger LOG = LoggerFactory.getLogger(PersonService.class);
+public class PersonMaintenanceService {
+    private static final Logger LOG = LoggerFactory.getLogger(PersonMaintenanceService.class);
     
     @Inject
     private PersonRepository personRepository;

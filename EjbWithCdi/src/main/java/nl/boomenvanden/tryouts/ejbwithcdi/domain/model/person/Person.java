@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package nl.boomenvanden.tryouts.ejbwithcdi.application.domain.model;
+package nl.boomenvanden.tryouts.ejbwithcdi.domain.model.person;
 
 import java.io.Serializable;
 import javax.persistence.*;
