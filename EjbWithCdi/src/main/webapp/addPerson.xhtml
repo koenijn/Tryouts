@@ -16,6 +16,13 @@
                 <h:inputText id="newPersonName" value="#{personsBean.personName}" />
                 <h:commandButton value="Create person" action="#{personsBean.createPerson(personsBean.personName)}"/>
             </p>
+            
+            <p>Saved users:</p>
+            <ul>
+            <ui:repeat value="#{personsBean.persons}" var="person">
+                <li>#{person.name}</li>
+            </ui:repeat>
+            </ul>
         </h:form>
     </h:body>
 </html>
