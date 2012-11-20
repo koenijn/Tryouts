@@ -12,16 +12,10 @@
     <h:body>
         <h:form id="myForm">
             <p>
-                <h:commandButton value="Add person" action="addPerson.xhtml"/>
-                <h:commandButton value="Reload" action="#{personsBean.reload}"/>
+                <h:outputLabel value="New Person's name:" for="newPersonName" />
+                <h:inputText id="newPersonName" value="#{personsBean.personName}" />
+                <h:commandButton value="Create person" action="#{personsBean.createPerson(personsBean.personName)}"/>
             </p>
-            
-            <p>Saved users:</p>
-            <ul>
-            <ui:repeat value="#{personsBean.persons}" var="person">
-                <li>#{person.name}</li>
-            </ui:repeat>
-            </ul>
         </h:form>
     </h:body>
 </html>

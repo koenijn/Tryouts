@@ -8,6 +8,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import nl.boomenvanden.tryouts.ejbwithcdi.application.PersonMaintenanceService;
@@ -19,8 +21,9 @@ import org.slf4j.LoggerFactory;
  *
  * @author mark
  */
-@Named
-@RequestScoped
+//@Named
+@ManagedBean
+@ViewScoped
 public class PersonsBean {
     private static final Logger LOG = LoggerFactory.getLogger(PersonsBean.class);
     
@@ -42,11 +45,17 @@ public class PersonsBean {
         LOG.info(this.toString() + " Destroyed");
     }
     
-    public void createPerson(String personName) {
+    public String createPerson(String personName) {
         LOG.info(this.toString() + " createPerson");
         Person createdPerson = personService.createPersonWithName(personName);
         
         persons.add(createdPerson);
+        
+        return "index.xhtml";
+    }
+    
+    public void reload() {
+        loadPersons();
     }
     
     private void loadPersons(){
