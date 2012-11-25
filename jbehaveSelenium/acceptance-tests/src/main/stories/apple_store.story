@@ -22,11 +22,12 @@ Then the iPad Retina configuration page will be shown
 When I choose for the WHITE iPad
 And the 32GB Wifi + Cellular version
 And for the AT&T network
-Then the total price will be 678.00 dollar
-When I press on continue
-Then I can personalize the iPad by engraving
+Then the summary contains product "iPad with Retina display Wi-Fi + Cellular for AT&T 32GB - White"
+And the summary shows a price of $729.00
+When I press on continue in the summary
+Then the "iPad Engraving" page is shown
 When I choose to skip the engraving
-Then the option to add accessories will be shown
+Then the "Accessories" page is shown
 When I add the order to the cart
 Then the order overview will be shown
 And the total price on the order overview will be 678.00 dollar

@@ -72,38 +72,33 @@ public class AppleDotComSteps {
 
     @When("for the AT&T network")
     public void whenForTheATTNetwork() throws InterruptedException {
-        Thread.sleep(5000);// temporary needed because of waiting for element to be visible
         store.chooseStepThreeOption();
     }
 
-    @Then("the total price will be 678.00 dollar")
-    @Pending
-    public void thenTheTotalPriceWillBe67800Dollar() {
-        // PENDING
+    @Then("the summary contains product \"$productLine\"")
+    public void thenTheSummaryContainsProductLine(String productLine) {
+        store.summaryProductIs(productLine);
     }
 
-    @When("I press on continue")
-    @Pending
-    public void whenIPressOnContinue() {
-        // PENDING
+    @Then("the summary shows a price of $price")
+    public void thenTheTotalPriceWillBePrice(String price) {
+        store.summaryPriceIs(price);
     }
 
-    @Then("I can personalize the iPad by engraving")
-    @Pending
-    public void thenICanPersonalizeTheIPadByEngraving() {
-        // PENDING
+    @When("I press on continue in the summary")
+    public void whenIPressOnContinueInTheSummary() {
+        store.continueFromSummary();
+    }
+
+    @Then("the \"$pageTitle\" page is shown")
+    public void thenPageIsShown(String pageTitle) throws InterruptedException {
+        assertThat(site.getTitle(), containsString(pageTitle));
+        Thread.sleep(5000);
     }
 
     @When("I choose to skip the engraving")
-    @Pending
     public void whenIChooseToSkipTheEngraving() {
-        // PENDING
-    }
-
-    @Then("the option to add accessories will be shown")
-    @Pending
-    public void thenTheOptionToAddAccessoriesWillBeShown() {
-        // PENDING
+        store.skipEngraving();
     }
 
     @When("I add the order to the cart")
