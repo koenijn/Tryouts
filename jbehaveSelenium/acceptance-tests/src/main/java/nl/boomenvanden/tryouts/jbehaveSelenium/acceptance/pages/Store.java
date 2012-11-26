@@ -66,30 +66,34 @@ public class Store extends FluentWebDriverPage {
         WebDriver driver = getDriverProvider().get();
         WebDriverWait wait = new WebDriverWait(driver, 5);
 
-        wait.until(ExpectedConditions.elementToBeClickable(cssSelector("div.carrier-select ul li.option-1.att label span")))
-                .click();
+        wait.until(ExpectedConditions.elementToBeClickable(cssSelector("div.carrier-select ul li.option-1.att label span"))).click();
     }
 
     public void summaryProductIs(String product) {
-        h3(cssSelector("div.content-summary-body div.section.section-product-title h3"))
-                .getText()
-                .shouldBe(product);
+        h3(cssSelector("div.content-summary-body div.section.section-product-title h3")).getText().shouldBe(product);
     }
 
     public void summaryPriceIs(String price) {
-        span(cssSelector("div.content-summary-body span.current_price span span"))
-                .getText()
-                .shouldContain(price);
+        span(cssSelector("div.content-summary-body span.current_price span span")).getText().shouldContain(price);
     }
 
     public void continueFromSummary() {
-        button(cssSelector("div.content-summary-body li.add-to-cart div.form-submit-btn button.button"))
-                .click();
+        button(cssSelector("div.content-summary-body li.add-to-cart div.form-submit-btn button.button")).click();
     }
-    
+
     public void skipEngraving() {
-        button(cssSelector("div#engraving-options fieldset.purchase-info.skip-engraving button.button"))
-                .click();
+        button(cssSelector("div#engraving-options fieldset.purchase-info.skip-engraving button.button")).click();
     }
-    
+
+    public void addToOrder() {
+        button(cssSelector("ul.purchase-info li.add-to-cart button.button")).click();
+    }
+
+    public void cartTotalPriceIs(String price) {
+        span(id("cart-summary-order-total-value")).getText().shouldContain(price);
+    }
+
+    public void overviewProductIs(String productLine) {
+        link(cssSelector("div.content.product-info.pvm h2 a")).getText().shouldContain(productLine);
+    }
 }

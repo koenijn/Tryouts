@@ -102,20 +102,17 @@ public class AppleDotComSteps {
     }
 
     @When("I add the order to the cart")
-    @Pending
     public void whenIAddTheOrderToTheCart() {
-        // PENDING
+        store.addToOrder();
     }
 
-    @Then("the order overview will be shown")
-    @Pending
-    public void thenTheOrderOverviewWillBeShown() {
-        // PENDING
+    @Then("the order overview contains product \"$productLine\"")
+    public void thenTheOrderOverviewContainsProductProductLine(String productLine) {
+        store.overviewProductIs(productLine);
     }
 
-    @Then("the total price on the order overview will be 678.00 dollar")
-    @Pending
-    public void thenTheTotalPriceOnTheOrderOverviewWillBe67800Dollar() {
-        // PENDING
+    @Then("the total price on the order overview is $price")
+    public void thenTheTotalPriceOnTheOrderOverviewIsPrice(String price) {
+        store.cartTotalPriceIs(price);
     }
 }

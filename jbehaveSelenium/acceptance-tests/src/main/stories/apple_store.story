@@ -29,5 +29,6 @@ Then the "iPad Engraving" page is shown
 When I choose to skip the engraving
 Then the "Accessories" page is shown
 When I add the order to the cart
-Then the order overview will be shown
-And the total price on the order overview will be 678.00 dollar
+Then the "Cart" page is shown
+And the order overview contains product "iPad with Retina display Wi-Fi + Cellular for AT&T 32GB - White"
+And the total price on the order overview is $729.00
