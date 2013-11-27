@@ -1,0 +1,7 @@
+# Spring Hateoas
+
+http://spring.io/guides/gs/rest-service/#scratch
+http://spring.io/guides/gs/rest-hateoas/
+http://docs.spring.io/spring/docs/3.1.4.RELEASE/javadoc-api/index.html?org/springframework/http/HttpEntity.html
+
+http://stackoverflow.com/questions/4374985/406-not-acceptable-in-spring-mvc-application-osgi-virgo-web-server-using-jack
